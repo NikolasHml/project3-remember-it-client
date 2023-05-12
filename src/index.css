@@ -1,13 +1,110 @@
-body {
+
+html, body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+ @font-face {
+  font-family: myFont;
+  src:url("../font/helsinki-webfont.woff")
+} 
+
+body {
+  background-color: #FFDEAD;
+  font-family: myFont; 
+  /* border: 1px solid black;  */
+  margin: 40px; 
+  line-height: 1.25;
 }
+
+.navbar {
+  position: fixed;
+  top:0;
+  left: 0;
+  right: 0;
+  padding: 4px;
+  border-bottom: 3pt solid black;
+  background-color: black;
+  color: white;
+  font-size: 20px;
+  text-align: right;
+}
+
+.titleHomepage {
+  background-color: black;
+  color: white;
+  padding: 10px;
+  border-radius: 40px;
+  max-width: fit-content;
+  margin-top: 55px;
+}
+
+.welcomeTextHomepage {
+  transform: rotate(350deg);
+  margin-top: 60px;
+}
+
+.pngBrain {
+  padding-left: 50px;
+  margin-top: 20px;
+}
+
+.firstContainerHomepage {
+  display: flex;
+  justify-content: space-around;
+  margin: 0px;
+  flex-wrap: wrap;
+  
+}
+
+.arrowOneHomepage {
+  width: 70px;
+  transform: rotate(270deg);
+  margin-bottom: 40px; /* das nochmal machen, damit Pfeil genau mittig auf what is this button steht
+  aber halt schauen, ob arrow margin kriegt oder button */
+}
+
+.whatIsThisButton {
+  background-color: black;
+  color: white;
+  font-size: 20px;
+  padding: 10px;
+  border-radius: 40px;
+  max-width: fit-content;
+  text-align: center;
+  align-self: center; /* das macht meine Schrift mittig im whatisthisbutton obwohl ich das bisher gar nicht bemerkt habe lol */
+}
+
+.secondContainerHomepage {
+  display: flex;
+  justify-content: space-around;
+}
+
+.arrowTwoHomepage {
+  width: 120px;
+  transform: rotate(330deg);
+}
+
+.memberTextHomepage {
+  transform: rotate(350deg);
+  width: 200px;
+  margin-top: 20px;
+}
+
+.changeMemberColor {
+  color: white;
+  background-color: black;
+}
+
+.rememberSignUp {
+  border-radius: 40px;
+  border: none;
+  font-family: myFont; 
+  font-size: 20px;
+  max-width: fit-content;
+  background-color: black;
+  color: white;
+  padding: 10px;
+  margin-left: 50px;
+  margin-top: 10px;
+} 
