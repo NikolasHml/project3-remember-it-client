@@ -12,7 +12,6 @@ html, body {
 body {
   background-color: #FFDEAD;
   font-family: myFont; 
-  /* border: 1px solid black;  */
   margin: 40px; 
   line-height: 1.25;
 }
@@ -29,6 +28,20 @@ body {
   font-size: 20px;
   text-align: right;
 }
+
+.errorMessage {
+  color: white;
+  background-color: red;
+  text-align: center;
+}
+
+.changeTextColor {
+  color: white;
+  background-color: black;
+}
+
+
+/* -----------------------------------HOMEPAGE */
 
 .titleHomepage {
   background-color: black;
@@ -91,11 +104,6 @@ body {
   margin-top: 20px;
 }
 
-.changeMemberColor {
-  color: white;
-  background-color: black;
-}
-
 .rememberSignUp {
   border-radius: 40px;
   border: none;
@@ -108,3 +116,7 @@ body {
   margin-left: 50px;
   margin-top: 10px;
 } 
+
+/* -----------------------------------SIGNUP PAGE */
+
+
