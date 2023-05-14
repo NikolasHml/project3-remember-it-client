@@ -35,7 +35,7 @@ function SignupPage(props) {
     };
 
     return(
-        <div>
+        <div className="containerSignupAndLogin">
             <h1>Sign up here for your second brain</h1>
 
             <form onSubmit={handleSignupSubmit}>
@@ -63,12 +63,12 @@ function SignupPage(props) {
                     onChange={handleName}
                 />
 
-                <button type="submit">Alright, sign me up!</button>
+                <button type="submit" className="signupOrLoginButton">Alright, sign me up!</button>
             </form>
 
             { errorMessage && <p className="errorMessage">{ errorMessage }</p>}
 
-            <p>Been here before, you say? Hit that&nbsp;   
+            <p className="alreadyUserOrNeedSignupText">Been here before, you say? Hit that&nbsp;   
                 <Link to={"/login"}> 
                     <span className="changeTextColor"> Login</span>
                 </Link> 

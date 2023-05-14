@@ -9,8 +9,69 @@ function AuthProviderWrapper(props) {
     const [isLoading, setIsLoading] = useState(true);
     const [user, setUser] = useState(null);
 
+    const storeToken = (token) => {
+        localStorage.setItem("authToken", token);
+    }
+
+    const authenticateUser = () => {
+        // Get the stored token from the localstorage
+        const storedToken = localStorage.getItem("authToken");
+
+        // If the token exists in the localstorage
+        if (storedToken) {
+            // We must send the JWT in the request's "Authorization" headers
+            axios.get(
+                `${API_URL}/auth/verify`,
+                { headers: { Authorization: `Bearer ${storedToken}`} }
+            )
+            .then((response) => {
+                // If the server verifies that the JWT is valid
+                const user = response.data;
+                // Update state variables
+                setIsLoggedIn(true);
+                setIsLoading(false);
+                setUser(user);
+            })
+            .catch((error) => {
+                // If the server sends an error response (= invalid token)
+                // directly update state variables
+                setIsLoggedIn(false);
+                setIsLoggedIn(false);
+                setUser(null);
+            });
+        } else {
+            // If the token is not available (or removed)
+            setIsLoggedIn(false);
+            setIsLoggedIn(false);
+            setUser(null);
+        }
+    }
+
+    const removeToken = () => {
+        // Upon Logout, remove the token from the localstorage
+        localStorage.removeItem("authToken");
+    }
+
+    const logOutUser = () => {
+        // To log out the user, remove the token
+        removeToken();
+        // and update the state variables
+        authenticateUser();
+    }
+
+    useEffect(() => {
+        authenticateUser();
+    }, [])
+
     return (
-        <AuthContext.Provider value={{ isLoggedIn, isLoading, user }}>
+        <AuthContext.Provider value={{ 
+            isLoggedIn, 
+            isLoading, 
+            user, 
+            storeToken, 
+            authenticateUser,
+            logOutUser
+        }}>
             {props.children}
         </AuthContext.Provider>      
     )
