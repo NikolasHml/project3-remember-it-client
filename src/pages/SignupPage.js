@@ -70,7 +70,7 @@ function SignupPage(props) {
 
             <p className="alreadyUserOrNeedSignupText">Been here before, you say? Hit that&nbsp;   
                 <Link to={"/login"}> 
-                    <span className="changeTextColor"> Login</span>
+                    <span className="changeTextColor">Login</span>
                 </Link> 
              , my friend!</p>
         </div>

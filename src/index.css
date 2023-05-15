@@ -9,11 +9,20 @@ html, body {
   src:url("../font/helsinki-webfont.woff")
 } 
 
+* {
+  box-sizing: content-box; /* overriding bs */
+}
+
 body {
   background-color: #FFDEAD;
   font-family: myFont; 
   margin: 40px; 
   line-height: 1.25;
+  color: black
+}
+
+h1 {
+  font-size: 35px; /* overriding bs */
 }
 
 .changeTextColor {
@@ -47,12 +56,23 @@ body {
   text-align: right;
 }
 
+.versionNotLoggedIn {
+  display: flex;
+  justify-content: flex-end;
+}
+
 .versionLoggedIn {
   display: flex;
   justify-content: space-between;
 }
 
 .menuIcon {
+  --bs-btn-bg: none;
+  --bs-btn-border-color: none;
+  --bs-btn-active-bg: none;
+}
+
+.menuIcon > img {
   max-width: 25px;
   height: auto;
 }
@@ -65,12 +85,13 @@ body {
   padding: 10px;
   border-radius: 40px;
   max-width: fit-content;
-  margin-top: 55px;
+  margin-top: 60px;
 }
 
 .welcomeTextHomepage {
   transform: rotate(350deg);
   margin-top: 60px;
+  font-size: 30px;
 }
 
 .pngBrain {
@@ -81,31 +102,29 @@ body {
 .firstContainerHomepage {
   display: flex;
   justify-content: space-around;
-  margin: 0px;
   flex-wrap: wrap;
-  
 }
 
 .arrowOneHomepage {
-  width: 70px;
+  max-width: 80px;
   transform: rotate(270deg);
   margin-bottom: 40px;
+  margin-top: 10px;
 }
 
-.whatIsThisButton {
+.buttonsHomepage {
+  border-radius: 40px;
+  border: none;
+  font-family: myFont; 
+  font-size: 20px;
+  max-width: fit-content;
   background-color: black;
   color: white;
-  font-size: 20px;
   padding: 10px;
-  border-radius: 40px;
-  max-width: fit-content;
-  text-align: center;
-  align-self: center; /* das macht meine Schrift mittig im whatisthisbutton obwohl ich das bisher gar nicht bemerkt habe lol */
 }
 
-.secondContainerHomepage {
-  display: flex;
-  justify-content: space-around;
+.extraWhatIsThis {
+  margin-top: 60px;
 }
 
 .arrowTwoHomepage {
@@ -117,20 +136,26 @@ body {
   transform: rotate(350deg);
   max-width: 200px;
   margin-top: 20px;
+
 }
 
-.rememberSignUp {
-  border-radius: 40px;
-  border: none;
-  font-family: myFont; 
-  font-size: 20px;
-  max-width: fit-content;
-  background-color: black;
-  color: white;
-  padding: 10px;
+.extraSignup {
   margin-left: 50px;
-  margin-top: 10px;
+  margin-top: 30px;
 } 
+
+/* -----------------------------------WHAT IS THIS? PAGE */
+
+.whatIsThisText {
+  text-align: center;
+  margin-top: 60px;
+}
+
+.whatIsThisText > p {
+  line-height: 1.5;
+  margin-top: 40px;
+  font-size: 18px;
+}
 
 /* -----------------------------------SIGNUP & LOGIN PAGE */
 
@@ -138,6 +163,8 @@ body {
   display: flex;
   justify-content: space-between;
   flex-direction: column;
+  text-align: center;
+  margin-top: 60px;
 }
 
 .containerSignupAndLogin > form {
@@ -156,6 +183,7 @@ body {
   font-size: 20px;
   margin-top: 20px;
   margin-bottom: 20px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 .signupOrLoginButton {

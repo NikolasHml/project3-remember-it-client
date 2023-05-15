@@ -1,10 +1,8 @@
 import { Link }  from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../context/auth.context";
-import MenuIcon from "../images/ThreeBarsMenuIcon.png"
+import MenuIcon from "../images/ThreeBarsMenuIconround.png"
 import Dropdown from "react-bootstrap/Dropdown"
-import DropdownButton from "react-bootstrap/DropdownButton"
-import DropdownItem from "react-bootstrap/esm/DropdownItem";
 
 
 function Navbar () {
@@ -18,7 +16,7 @@ function Navbar () {
         <nav>
 
         {!isLoggedIn && (
-            <header className="navbar">
+            <header className="navbar versionNotLoggedIn">
                 <Link to="/login" className="changeTextColor">
                     <span>Login</span> 
                 </Link>
@@ -27,25 +25,20 @@ function Navbar () {
 
         {isLoggedIn && (
             <header className="navbar versionLoggedIn">
-{/*             <Dropdown>
-      <Dropdown.Toggle variant="success" id="dropdown-basic">
-        Dropdown Button
-      </Dropdown.Toggle>
+                <Dropdown>
+                    <Dropdown.Toggle variant="success" id="dropdown-basic" className="menuIcon">
+                        <img src={MenuIcon} alt="MenuIcon" className="menuIcon"/>
+                    </Dropdown.Toggle>
 
-      <Dropdown.Menu>
-        <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-        <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-        <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
-      </Dropdown.Menu>
-    </Dropdown> */}
+                    <Dropdown.Menu>
+                        <Dropdown.Item>{ user && user.name }</Dropdown.Item>
+                        <Dropdown.Divider />
+                        <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
+                        <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
+                        <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+                    </Dropdown.Menu>
+                </Dropdown>
 
-{/*       <DropdownButton className="test" title="Dropdown">
-        <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-        <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-        <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
-      </DropdownButton> */}
-                {/* <img src={MenuIcon} alt="MenuIcon" className="menuIcon"/> */}
-                {/* <span className="changeTextColor">{ user && user.name }</span> */}
                 <Link to="/" className="changeTextColor">
                     <span onClick={logOutUser}>Logout</span>  
                 </Link>
