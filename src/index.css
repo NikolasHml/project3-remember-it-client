@@ -203,3 +203,9 @@ h1 {
   font-size: 20px;
   margin-top: 30px;
 }
+
+/* -----------------------------------ADD MEMORY PAGE */
+
+.dropdown-item {
+  width: unset;
+}

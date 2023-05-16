@@ -31,11 +31,10 @@ function Navbar () {
                     </Dropdown.Toggle>
 
                     <Dropdown.Menu>
-                        <Dropdown.Item>{ user && user.name }</Dropdown.Item>
+                        <Dropdown.Item href="/profile">{ user && user.name }</Dropdown.Item>
                         <Dropdown.Divider />
-                        <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-                        <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-                        <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+                        <Dropdown.Item href="/memory">Your Memory</Dropdown.Item>
+                        <Dropdown.Item href="/addmemory">add new stuff</Dropdown.Item>
                     </Dropdown.Menu>
                 </Dropdown>
 

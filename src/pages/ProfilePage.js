@@ -12,11 +12,12 @@ function ProfilePage() {
             <p>{ user && user.name }</p>
             <p>Here are your memories</p>
             <div>
-            <>
-                <Link to="/signup">
-                    <button className="buttonsHomepage extraSignup">Sign Up</button>
-                </Link>        
-            </>
+                <Link to="/memory">
+                    <button className="buttonsHomepage extraSignup">Your memory</button>
+                </Link>
+                <Link to="/addmemory">
+                    <button className="buttonsHomepage extraSignup">Add new stuff</button>
+                </Link>     
             </div>
         </div>
     )

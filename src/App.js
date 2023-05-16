@@ -8,6 +8,8 @@ import WhatIsThisPage from './pages/WhatIsthisPage';
 import ProfilePage from './pages/ProfilePage';
 import MemoryListPage from './pages/MemoryListPage';
 import AddMemoryPage from './pages/AddMemoryPage';
+import MemoryDetailsPage from "./pages/MemoryDetailsPage";
+import EditMemoryPage from './pages/EditMemoryPage';
 
 function App() {
   return (
@@ -19,9 +21,11 @@ function App() {
         <Route path="/signup" element={ <SignupPage />} />
         <Route path="/login" element={ <LoginPage />} />
         <Route path="/whatisthis" element={ <WhatIsThisPage />} />
-        {/* <Route path="/profile" element={ <ProfilePage />} /> */}
+        <Route path="/profile" element={ <ProfilePage />} />
         <Route path="/memory" element={ <MemoryListPage />} />
         <Route path="/addmemory" element={ <AddMemoryPage />} />
+        <Route path="/memory/:memoryId" element={ <MemoryDetailsPage />} />
+        <Route path="/memory/edit/:memoryId" element={ <EditMemoryPage />} />
       </Routes>
 
     </div>

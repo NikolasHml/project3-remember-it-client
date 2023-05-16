@@ -1,29 +1,18 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import Dropdown from "react-bootstrap/Dropdown"
-import { useNavigate } from "react-router-dom";
 
 const API_URL = "http://localhost:5005";
 
-function AddMemory(props) {
-    const [title, setTitle] = useState("");
-    const [description, setDescription] = useState("");
+function EditMemoryPage(props) {
+    const [title, setTitle] = useState("")
+    const [description, setDescription] = useState("")
     const [category, setCategory] = useState("")
 
+    const { memoryId } = useParams();
     const navigate = useNavigate()
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-
-        const requestBody = { title, description, category };
-        axios
-            .post(`${API_URL}/memory`, requestBody)
-            .then((response) => {
-                navigate("/memory")
-                //props.refreshMemory(); ---> später löschen? 
-            })
-            .catch((error) => console.log(error));
-    };
     const [mapCategory, setMapCategory] = useState([]);
 
     const getAllCategories = () => {
@@ -41,11 +30,49 @@ function AddMemory(props) {
         getAllCategories();
     }, [ ]);
 
+    // Following useEffect will run after initial render and then eacht time the
+    // memoryId coming from the URL changes
+    useEffect (() => {
+        axios
+            .get(`${API_URL}/memory/${memoryId}`)
+            .then((response) => {
+                // We update the state with the memory data coming from the response
+                // This way we set inputs to show the actual title and description of 
+                // the memory
+                const oneMemory = response.data;
+                setTitle(oneMemory.title);
+                setDescription(oneMemory.description)
+                setCategory(oneMemory.category)
+            })
+            .catch((error) => console.log(error));
+    }, [memoryId])
+
+    const handleFormSubmit = (e) => {
+        e.preventDefault();
+
+        const requestBody = { title, description, category };
+        axios
+            .put(`${API_URL}/memory/${memoryId}`, requestBody)
+            .then((response) => {
+                navigate(`/memory/${memoryId}`) 
+            })
+            .catch((error) => console.log(error));
+    };
+
+    const deleteMemory = () => {
+        axios
+            .delete(`${API_URL}/memory/${memoryId}`)
+            .then(() => {
+                navigate("/memory");
+            })
+            .catch((err) => console.log(err));
+    };
+
     return (
         <div>
-            <h3>Add new stuff to your memory</h3>
+            <h3>Edit your memory</h3>
 
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleFormSubmit}>
                 <label>title</label>
                 <input
                     type="text"
@@ -95,11 +122,29 @@ function AddMemory(props) {
                 })}       
                     </Dropdown.Menu>
                 </Dropdown>
- 
-                <button type="submit">Add this stuff!</button>
+
+                {/* Test: */}
+{/*                 {mapCategory.map((oneCategory) => {
+                    for (i = 0; i < mapCategory.length; i++) {
+                                    oneCategory.category[i] === oneCategory.category[i-1] ? oneCategory.category : "nope")
+                    return (
+                            <div key={oneCategory._id}>
+                                <p>
+                              {/*   {for (i = 0; i < mapCategory.length; i++) {
+                                    oneCategory.category[i] === oneCategory.category[i-1] ? oneCategory.category : "nope"
+                                }} 
+                                {oneCategory.category[0] === oneCategory.category[1] ? oneCategory.category : "nope"}</p>
+                            </div>)})} */}
+
+                <input type="submit" value="Save the changes" />
+                <button onClick={deleteMemory}>Delete this stuff</button>
+                <Link to="/memory"> {/* das vllt dann mit dem Pfeil zurück ersetzen */}
+                    <button>Back to your memories</button>
+                </Link>
             </form>
         </div>
     )
 }
 
-export default AddMemory;
+export default EditMemoryPage;
+
