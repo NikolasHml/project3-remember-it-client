@@ -2,8 +2,8 @@ import brainHomepage from "../images/pngbrain.com.png"
 import arrowOneHomepage from "../images/arrow1Homepage.png"
 import arrowTwoHomepage from "../images/arrow2Homepage.png"
 import { Link } from "react-router-dom"
-import { useContext } from "react";
-import { AuthContext } from "../context/auth.context";
+// import { useContext } from "react";
+// import { AuthContext } from "../context/auth.context";
 
 function HomePage() {
 
