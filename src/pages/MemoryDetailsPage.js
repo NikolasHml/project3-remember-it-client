@@ -20,6 +20,7 @@ function MemoryDetailsPage(props) {
 
     useEffect(() => {
         getMemory();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [] );
 
     return (
