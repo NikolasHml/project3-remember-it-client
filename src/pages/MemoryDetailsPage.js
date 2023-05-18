@@ -5,8 +5,8 @@ import { Link, useParams } from "react-router-dom";
 function MemoryDetailsPage(props) {
     const [memory, setMemory] = useState(null);
     const { memoryId } = useParams();
-    const API_URL = "http://localhost:5005"; 
-
+    const API_URL = process.env.REACT_APP_API_URL;
+    
     // Helper fct to retrieve memory by id
     const getMemory = () => {
         axios
