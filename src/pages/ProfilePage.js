@@ -6,7 +6,8 @@ import addNewStuffImage from "../images/addnewstufflogo.png"
 
 function ProfilePage() {
 
-    const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
+    // const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
+    const { user } = useContext(AuthContext);
 
     return (
         <div className="firstContainerProfile">

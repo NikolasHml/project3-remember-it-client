@@ -7,7 +7,7 @@ import { AuthContext } from "../context/auth.context";
 
 function HomePage() {
 
-    const { isLoggedIn, user } = useContext(AuthContext);
+    // const { isLoggedIn, user } = useContext(AuthContext);
 
     return (
         <div >
