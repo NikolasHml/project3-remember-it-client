@@ -25,18 +25,44 @@ function MemoryDetailsPage(props) {
     return (
         <div>
             {memory && (
-                <>
-                    <p>{memory.category}</p>
-                    <h3>{memory.title}</h3>
-                    <p>{memory.description}</p>
+                <>  
+                    <div className="containerAddStuff">
+                        <h3 className="headerDetailsStuff">{memory.title}</h3>
+                        <div className="categoryContainer">
+                            <p className="menuIcon extraCategoryAdd extraCategoryDetails">category</p>
+                            <p className="displayCategory">{memory.category}</p>
+                        </div>
+                        {memory.description && <div>
+                        <label className="extraLabelDetails">What is it about?</label>
+                            <div className="borderForText">
+                                <p>{memory.description}</p>
+                            </div>
+                        </div>}
+                        {memory.usefulFor && <div>
+                            <label className="extraLabelDetails">Useful for</label>
+                                <div className="borderForText">
+                                    <p>{memory.usefulFor}</p>
+                                </div>
+                        </div>}
+                        <p className="linksDetails">
+                            {memory.link && <a href={memory.link} target="_blank" rel="noopener noreferrer">Link and go!</a>}
+                        </p>
+                        <p className="linksDetails">
+                            {memory.video && <a href={memory.video} target="_blank" rel="noopener noreferrer">Link to video!</a>}
+                        </p>
+                        {memory.imageUrl && <img src={memory.imageUrl} alt="1 Bild" className="imageDetails"/>}                        
+                    </div>
                 </>
             )}
-            <Link to={`/memory/edit/${memoryId}`}>
-                <button>Edit this stuff</button>
-            </Link>
-            <Link to="/memory"> {/* das vllt dann mit dem Pfeil zurück ersetzen */}
-                <button>Back to your memories</button>
-            </Link>
+
+            <div className="containerButtonsEdit">
+                <Link to={`/memory/edit/${memoryId}`}>
+                    <button className="singleButtonsEdit">Edit this stuff</button>
+                </Link>
+                <Link to="/memory"> {/* das vllt dann mit dem Pfeil zurück ersetzen */}
+                    <button className="singleButtonsEdit">Back to your memory</button>
+                </Link>
+            </div>
         </div>
     )
 }

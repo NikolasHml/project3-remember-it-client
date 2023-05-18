@@ -7,20 +7,24 @@ const API_URL = "http://localhost:5005";
 
 function AddMemory(props) {
     const [title, setTitle] = useState("");
+    const [category, setCategory] = useState("");
     const [description, setDescription] = useState("");
-    const [category, setCategory] = useState("")
+    const [usefulFor, setUsefulFor] = useState("");
+    const [link, setLink] = useState("");
+    const [video, setVideo] = useState("");
+    const [imageUrl, setImageUrl] = useState("");
 
     const navigate = useNavigate()
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        const requestBody = { title, description, category };
+        const requestBody = { title, category, description, usefulFor, link, video, imageUrl};
         axios
             .post(`${API_URL}/memory`, requestBody)
-            .then((response) => {
+            .then(() => {
                 navigate("/memory")
-                //props.refreshMemory(); ---> später löschen? 
+            //props.refreshMemory(); ---> später löschen? 
             })
             .catch((error) => console.log(error));
     };
@@ -41,33 +45,35 @@ function AddMemory(props) {
         getAllCategories();
     }, [ ]);
 
+    const handleFileUpload = (e) => {
+        const uploadData = new FormData();
+
+        uploadData.append("imageUrl", e.target.files[0]);
+
+        axios
+            .post(`${API_URL}/upload`, uploadData)
+            .then((res) => setImageUrl(res.data.fileUrl))
+            .catch((error) => console.log(error))
+    }
+
     return (
         <div>
-            <h3>Add new stuff to your memory</h3>
+            <h3 className="headerAddNewStuff">Add new stuff to your memory</h3>
 
-            <form onSubmit={handleSubmit}>
-                <label>title</label>
+            <form onSubmit={handleSubmit} className="containerAddStuff">
+                <label className="labelNameIt">Name it</label>
                 <input
                     type="text"
                     name="title"
                     value={title}
                     onChange={(e) => setTitle(e.target.value)} 
+                    required
                 />
 
-                <label>description</label>
-                <textarea
-                    type="text"
-                    name="description"
-                    value={description}
-                    onChange={(e) => setDescription(e.target.value)}
-                />
-
-                 <label>category</label> 
-                <p>{category}</p>
-
+                <div className="categoryContainer">
                 <Dropdown autoClose="outside">
-                    <Dropdown.Toggle className="menuIcon">
-                        category
+                    <Dropdown.Toggle className="menuIcon extraCategoryAdd">
+                        category 
                     </Dropdown.Toggle>
 
                     <Dropdown.Menu>
@@ -82,6 +88,8 @@ function AddMemory(props) {
                             name="category"
                             value={category}
                             onChange={ (e) => setCategory(e.target.value)}
+                            required
+                            className="inputCategoryAddStuff"
                             />
                         </Dropdown.Item>
                 {mapCategory.map((oneCategory) => {
@@ -95,8 +103,54 @@ function AddMemory(props) {
                 })}       
                     </Dropdown.Menu>
                 </Dropdown>
- 
-                <button type="submit">Add this stuff!</button>
+                {category ? <label>{category}</label> : null }
+                </div>
+
+                <label>What is it about?</label>
+                <textarea
+                    type="text"
+                    name="description"
+                    value={description}
+                    onChange={(e) => setDescription(e.target.value)}
+                />
+
+                <label>Useful for</label>
+                <textarea
+                    type="text"
+                    name="usefulFor"
+                    value={usefulFor}
+                    onChange={(e) => setUsefulFor(e.target.value)} 
+                />
+
+                <label>Have a link?</label>
+                <input
+                    type="url"
+                    name="link"
+                    value={link}
+                    onChange={(e) => setLink(e.target.value)} 
+                />
+
+                <label>Link to video you say?</label>
+                <input
+                    type="text"
+                    name="video"
+                    value={video}
+                    onChange={(e) => setVideo(e.target.value)} 
+                />
+
+                <label>Got a picture?</label>
+                <div className="containerFieldAndUploadText">
+                    <div className="containerField">
+                        <div className="containerParent">
+                            <div className="containerUploadPicture">
+                                <p className="clickUploadText">Click to upload</p>
+                                <input type="file" onChange={(e) => handleFileUpload(e)} className="uploadPicture"/>
+                            </div>
+                        </div>
+                    </div>
+                    {imageUrl ? <p className="seeItText">Yep, I can see it!</p> : <p className="seeItText">Nothing here, yet</p> }
+                </div>
+                <button type="submit" className="buttonsHomepage">Add this stuff!</button> 
             </form>
         </div>
     )

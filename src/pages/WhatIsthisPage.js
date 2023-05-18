@@ -8,6 +8,9 @@ function WhatIsThisPage() {
                for your next discussion with your conservative voting grandpa? Finally found that one video that properly explains how CSS actually works? Found a fun fact you really really
                need to tell at the next party? Found the best Star Wars meme you've ever seen? Save it here and remember it forever!
             </p>
+            <p>
+                This page was created as part of the web development bootcamp as the final project made by the creator of this great website.
+            </p>
         </div>
     )
 }

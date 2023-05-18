@@ -41,37 +41,52 @@ function MemoryListPage() {
         <div>
             {/* <AddMemory refreshMemory={getAllMemory} /> ---> später löschen?*/}
             <Link to="/addmemory">
-                <button>Add new stuff to my memory</button>
+                <button className="buttonsHomepage extraButtonList">Add new stuff to my memory</button>
             </Link>
+            <h3 className="headerListAddNewStuff">Your memory</h3>
 
-            <Dropdown>
-                    <Dropdown.Toggle className="menuIcon">
-                        {!category ? "Filter by Category" : category}
-                    </Dropdown.Toggle>
+            <div className="categoryContainer">
+                <Dropdown>
+                        <Dropdown.Toggle className="menuIcon extraCategoryAdd">
+                            {!category ? "Filter by Category" : "Category"}
+                        </Dropdown.Toggle>
 
-                    <Dropdown.Menu>
-                {mapCategory.map((oneCategory) => {
-                    return (
-                        <Dropdown.Item>
-                            <div key={oneCategory._id}>
-                                <p onClick={(e) => setCategory(e.target.innerText)}>{oneCategory}</p>
-                            </div>
-                        </Dropdown.Item>
-                    )
-                })}   
-                        <Dropdown.Item>
-                            <p onClick={() => setCategory("")}>all stuff</p>
-                        </Dropdown.Item>    
-                    </Dropdown.Menu>
+                        <Dropdown.Menu>
+                    {mapCategory.map((oneCategory) => {
+                        return (
+                            <Dropdown.Item>
+                                <div key={oneCategory._id}>
+                                    <p onClick={(e) => setCategory(e.target.innerText)}>{oneCategory}</p>
+                                </div>
+                            </Dropdown.Item>
+                        )
+                    })}   
+                            <Dropdown.Item>
+                                <p onClick={() => setCategory("")}>all stuff</p>
+                            </Dropdown.Item>    
+                        </Dropdown.Menu>
                 </Dropdown>
+                {category ? <label>{category}</label> : null }
+            </div>
 
             {memories.map((memory) => {
                 return (
                     <div key={memory._id}>
-                        <Link to={`/memory/${memory._id}`}>
-                            <h3>{!category ? memory.title : memory.category === category ? memory.title : null}</h3>
-                        </Link>
-                    </div>
+                        {category === memory.category && <div className="containerMemoryList">
+                            <Link to={`/memory/${memory._id}`} className="linkStyleList">
+                                <h4>{!category ? memory.title : memory.category === category ? memory.title : null}</h4>
+                                {memory.link && <p className="changeTextColor">show me source</p>} 
+                                {memory.video && <p className="changeTextColor">show me video</p>}
+                                {memory.imageUrl && <p><img src={memory.imageUrl} alt="yours" className="editPictureDisplay"/></p>}
+                            </Link></div>}
+                        {!category && <div className="containerMemoryList">
+                            <Link to={`/memory/${memory._id}`} className="linkStyleList">
+                                <h3>{!category ? memory.title : memory.category === category ? memory.title : null}</h3>
+                                {memory.link && <p className="changeTextColor">show me source</p>}
+                                {memory.video && <p className="changeTextColor">show me video</p>}
+                                {memory.imageUrl && <p><img src={memory.imageUrl} alt="yours" className="editPictureDisplay"/></p>}
+                            </Link></div>}
+                        </div>
                 )
             })}
         </div>
@@ -79,3 +94,4 @@ function MemoryListPage() {
 }
 
 export default MemoryListPage;
+

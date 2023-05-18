@@ -29,6 +29,7 @@ h1 {
   color: white;
   background-color: black;
   text-decoration: none;
+  display: inline-block;
 }
 
 .errorMessage {
@@ -37,9 +38,9 @@ h1 {
   text-align: center;
 }
 
-.test {
-  color: white;
-  background-color: silver;
+.dropdown-item {
+  width: unset;
+  --bs-dropdown-link-active-bg: none;
 }
 
 /* -----------------------------------NAVBAR */
@@ -70,6 +71,7 @@ h1 {
   --bs-btn-bg: none;
   --bs-btn-border-color: none;
   --bs-btn-active-bg: none;
+  --bs-btn-hover-bg: none;
 }
 
 .menuIcon > img {
@@ -136,7 +138,6 @@ h1 {
   transform: rotate(350deg);
   max-width: 200px;
   margin-top: 20px;
-
 }
 
 .extraSignup {
@@ -204,8 +205,281 @@ h1 {
   margin-top: 30px;
 }
 
+/* -----------------------------------PROFILE PAGE */
+.firstContainerProfile {
+  text-align: center;
+  margin-top: 60px;
+}
+
+.username {
+  padding: 10px;
+  margin-top: 20px;
+  margin-bottom: 50px;
+}
+
+.questionProfile {
+  font-size: 30px;
+}
+
+.secondContainerProfile {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-top: 40px;
+}
+
+.profileImages {
+  max-width: 130px;
+  margin-bottom: 40px;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.brainImage {
+  max-width: 170px;
+}
+
+.buttonsProfile {
+max-width: 80px;
+margin-bottom: 40px;
+margin-top: 10px; 
+padding: 15px;
+margin-left: 10px;
+margin-right: 25px;
+}
+
+.addButton {
+  margin-top: 40px;
+}
+
 /* -----------------------------------ADD MEMORY PAGE */
 
-.dropdown-item {
-  width: unset;
+.headerAddNewStuff {
+  margin-top: 60px;
+  text-align: center;
+}
+
+.containerAddStuff {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+  font-size: 19px;
+}
+
+.containerAddStuff > label {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 15px;
+}
+
+.btn-primary {
+  --bs-btn-color: black;
+  --bs-btn-padding-y: none;
+  margin-top: 15px;
+}
+.categoryContainer {
+  display: flex;
+  margin-top: 15px;
+}
+
+.categoryContainer > label {
+  position: relative;
+  left: 60px;
+  margin-top: 10px;
+  max-width: fit-content;
+  align-self: center;
+  background-color: black;
+  color: white;
+  padding: 5px 15px;
+  border-radius: 40px;
+}
+
+.containerAddStuff > input {
+  border-radius: 40px;
+  border: none;
+  margin-top: 10px;
+  padding: 5px 15px;
+}
+
+.containerAddStuff > button {
+  align-self: center;
+  margin-top: 40px;
+}
+
+.containerAddStuff > textarea {
+  border-radius: 40px;
+  border: none;
+  margin-top: 10px;
+  padding: 5px 15px;
+}
+
+.inputCategoryAddStuff {
+  border-radius: 40px;
+}
+
+.categoryAddStuff {
+  font-size: 19px;
+}
+
+.containerField {
+  width: 80px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.containerParent {
+  margin-top: 35px;
+  margin-left: 40px;
+  padding: 10px;
+  background:#FFDEAD;
+}
+
+.containerUploadPicture {
+  text-align: center;
+  border: 3px dashed;
+  padding: 11px;
+  position: relative;
+  cursor: pointer;
+}
+
+.uploadPicture {
+  display: block;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  cursor: pointer;
+}
+
+.clickUploadText {
+  margin-top: 4px;
+  margin-bottom: 4px;
+}
+
+.containerFieldAndUploadText{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.seeItText {
+  margin-top: 20px;
+}
+
+.extraCategoryAdd {
+  font-size: 19px;
+}
+
+/* -----------------------------------EDIT STUFF FROM MEMORY PAGE */
+/* -----------------------------------MOSTLY USED ADD STUFF CSS */
+
+.editPictureDisplay {
+  max-width: 120px;
+  max-height: 120px;
+}
+
+.containerButtonsEdit {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  margin-top: 40px;
+  font-size: 5px;
+  align-items: center;
+}
+
+.singleButtonsEdit {
+  border-radius: 40px;
+  border: none;
+  font-family: myFont; 
+  font-size: 20px;
+  background-color: black;
+  color: white;
+  padding: 5px 10px;
+  margin-top: 10px;
+}
+
+/* -----------------------------------DETAILS ONE STUFF FROM MEMORY PAGE */
+/* -----------------------------------MOSTLY USED ADD STUFF CSS */
+
+.headerDetailsStuff {
+  margin-top: 30px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.displayCategory {
+  position: relative;
+  left: 60px;
+  margin-top: 0px;
+  max-width: fit-content;
+  align-self: center;
+  background-color: black;
+  color: white;
+  padding: 5px 15px;
+  border-radius: 40px;
+}
+
+.extraCategoryDetails {
+  align-self: center;
+}
+
+.borderForText {
+  border-color: black;
+  border: 2px dashed;
+  padding: 5px;
+  margin-top: 10px;
+}
+
+.linksDetails {
+  margin-top: 15px;
+}
+
+.linksDetails > a {
+  color: white;
+  text-decoration: none;
+  background-color: black;
+}
+
+.imageDetails {
+  max-width: 250px;
+  max-height: 250px;
+  align-self: center;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.extraLabelDetails {
+  margin-top: 15px;
+}
+
+/* -----------------------------------MEMORY LIST PAGE */
+
+.extraButtonList {
+  margin-top: 30px;
+}
+
+.headerListAddNewStuff {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.containerMemoryList {
+  border-color: black;
+  border: 2px dashed;
+  padding: 5px;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.linkStyleList {
+  text-decoration: none;
+  color: black;
+  vertical-align: center;
 }
