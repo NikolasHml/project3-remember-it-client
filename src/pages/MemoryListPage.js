@@ -75,17 +75,19 @@ function MemoryListPage() {
                         {category === memory.category && <div className="containerMemoryList">
                             <Link to={`/memory/${memory._id}`} className="linkStyleList">
                                 <h4>{!category ? memory.title : memory.category === category ? memory.title : null}</h4>
-                                {memory.link && <p className="changeTextColor">show me source</p>} 
-                                {memory.video && <p className="changeTextColor">show me video</p>}
+                            </Link>
+                                {memory.link && <a href={memory.link} className="changeTextColor showMeLink" target="_blank" rel="noopener noreferrer">show me the source</a>} 
+                                {memory.video && <a href={memory.video} className="changeTextColor showMeLink" target="_blank" rel="noopener noreferrer">show me the video</a>}
                                 {memory.imageUrl && <p><img src={memory.imageUrl} alt="yours" className="editPictureDisplay"/></p>}
-                            </Link></div>}
+                                </div>}
                         {!category && <div className="containerMemoryList">
                             <Link to={`/memory/${memory._id}`} className="linkStyleList">
                                 <h3>{!category ? memory.title : memory.category === category ? memory.title : null}</h3>
-                                {memory.link && <p className="changeTextColor">show me source</p>}
-                                {memory.video && <p className="changeTextColor">show me video</p>}
+                            </Link>
+                            {memory.link && <a href={memory.link} className="changeTextColor showMeLink" target="_blank" rel="noopener noreferrer">show me the source</a>} 
+                                {memory.video && <a href={memory.video} className="changeTextColor showMeLink" target="_blank" rel="noopener noreferrer">show me the video</a>}
                                 {memory.imageUrl && <p><img src={memory.imageUrl} alt="yours" className="editPictureDisplay"/></p>}
-                            </Link></div>}
+                                </div>} 
                         </div>
                 )
             })}

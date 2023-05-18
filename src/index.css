@@ -483,3 +483,8 @@ margin-right: 25px;
   color: black;
   vertical-align: center;
 }
+
+.showMeLink {
+  text-decoration: none;
+  max-width: fit-content;
+}
